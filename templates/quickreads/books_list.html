@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Employee{%endblock%}
+
+{% block content %}
+<div class="container p-3 m-3 mx-auto bg-body-tertiary rounded overflow-auto">
+    <table id="myTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Published</th>
+                <th scope="col">Cover</th>
+                <th scope="col">Author</th>
+            </tr>
+        </thead>
+        <tbody class="text-trunacate"></tbody>
+    </table>
+</div>
+
+{% endblock %}
+{% block script %}
+{% include 'quickreads/datatable.html' %}
+{% endblock %}

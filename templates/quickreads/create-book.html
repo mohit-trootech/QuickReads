@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Add Employee{%endblock%}
+
+{% block content %}
+<div class="container my-5">
+    <form method="post" class="needs-validation " novalidate enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="row mb-3 mx-2">
+            <label for="{{field.id_for_label}}" class="form-label">{{field.label}}</label>
+            {{field}}
+            {% if field.help_text %}
+            <div class="invalid-feedback">
+                {{field.help_text}}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

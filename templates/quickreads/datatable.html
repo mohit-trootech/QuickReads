@@ -1,0 +1,15 @@
+<script>
+    var data = [
+        {% for book in books %}
+    [
+        "{{forloop.counter}}",
+        "{{book.title}}",
+        "{{book.published}}",
+        "{{book.cover}}",
+        "{{book.authors}}",] {%if not forloop.last %}, {% endif %}
+    {% endfor %}
+    ]
+    $('#myTable').DataTable({
+        data: data
+    });
+</script>
