@@ -93,3 +93,4 @@ class EmailConstants(Enum):
 
 class SuccessMessages(Enum):
     NEWSLETTER = "You Subscribed to the Newsletter"
+    CREATE = "Book Created Successfully"

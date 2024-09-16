@@ -52,7 +52,7 @@ class LoginView(FormView):
 class RegisterView(FormView):
     template_name = Templates.REGISTER.value
     form_class = UserRegisterForm
-    success_url = reverse_lazy(Urls.REGISTER_REVERSE.value)
+    success_url = reverse_lazy(Urls.LOGIN_REVERSE.value)
 
     def form_valid(self, form):
         try:
@@ -98,7 +98,7 @@ class UpdateView(FormView):
                 user=form_data.get("name"), file=form_data.get("profile")
             )
         form_data = serialize_user_form_data(form_data)
-        form_data["profile"] = profile_url
+        form_data["profile"] = profile_url or None
         print(form_data)
         localId = get_user_localId(self.request)
         update_user_data_to_firebase_database(localId=localId, data=form_data)

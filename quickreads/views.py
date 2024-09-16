@@ -1,3 +1,4 @@
+from logging import info
 from django.http import JsonResponse
 from django.views.generic import FormView, TemplateView, View
 from quickreads.utils.constants import EmailConstants, Templates, SuccessMessages
@@ -5,7 +6,7 @@ from quickreads.forms import BookForm
 from django.urls import reverse_lazy
 from quickreads.utils.constants import Urls
 from time import time
-from math import floor
+from math import floor, inf
 from quickreads.utils.utils import (
     serialize_form_data,
     upload_image_to_firebase_storage_and_format_url,
@@ -54,6 +55,7 @@ class CreateBookView(FormView):
 
             data = serialize_form_data(form_data=data, cover=cover, book=book)
             response = create_database_snapshot_for_employees(key=key, data=data)
+            info(self.request, SuccessMessages.CREATE.value)
             return super().form_valid(form)
         except Exception as err:
             form.add_error(None, err)

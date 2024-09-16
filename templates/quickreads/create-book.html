@@ -12,7 +12,7 @@
         <p class="mt-2">
             Contribute in Community Lets Everyone Reads Your Favourite Book
         </p>
-        <form action="" method="post" class="form">
+        <form action="" method="post" class="form" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
             <label class="form-control w-full" for="{{field.id_for_label}}">
