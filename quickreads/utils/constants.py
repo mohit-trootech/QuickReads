@@ -1,9 +1,12 @@
 from enum import Enum
+from dotenv import dotenv_values
 
 
 class Templates(Enum):
     ADD = "quickreads/create-book.html"
-    BOOKS_LIST = "quickreads/books_list.html"
+    BOOKS_LIST = "quickreads/books-list.html"
+    BOOK_CARD = "quickreads/book-card.html"
+    NEWSLETTER = "email_templates/newsletter.html"
 
 
 class Employees(Enum):
@@ -29,10 +32,11 @@ class Urls(Enum):
     CREATE_BOOK_REVERSE = "create-book"
     LOGIN_REVERSE = "login"
     REGISTER_REVERSE = "register"
+    NEWLETTER_REVERSE = "newsletter"
 
 
 class Constants(Enum):
-    FORM_CLASS = "input input-bordered w-full max-w-xs"
+    FORM_CLASS = "input input-bordered w-full"
     NOT_AUTHENTICATED = "Please Login to Continue"
     THEME_CHOICES = (
         ("light", "light"),
@@ -76,3 +80,16 @@ STATIC_URL = "static/"
 STATIC_PATH = "templates/static/"
 STATIC_ROOT = "assets"
 TEMPLATES = "templates/"
+TYPE_HTML = "text/html"
+NEWSLETTER = "Newsletter"
+
+
+# Email Constants
+class EmailConstants(Enum):
+    config = dotenv_values(".env")
+    NEWSLETTER = "QuickReads Newsletter Subscribed"
+    HOST = config.get("EMAIL_HOST_USER")
+
+
+class SuccessMessages(Enum):
+    NEWSLETTER = "You Subscribed to the Newsletter"

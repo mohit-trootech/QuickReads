@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from quickreads.views import HomeView, CreateBookView, BooksView
+from quickreads.views import HomeView, CreateBookView, BooksView, NewsletterView
 from quickreads.utils.constants import Urls
 
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path("", HomeView.as_view(), name=Urls.HOME_REVERSE.value),
     path("books/", BooksView.as_view(), name=Urls.BOOKS_REVERSE.value),
     path("create/", CreateBookView.as_view(), name=Urls.CREATE_BOOK_REVERSE.value),
+    path("newsletter/", NewsletterView.as_view(), name=Urls.NEWLETTER_REVERSE.value),
 ]

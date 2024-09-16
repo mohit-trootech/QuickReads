@@ -12,7 +12,7 @@
         <form class="space-y-4" method="post">
             {% csrf_token %}
             {% for field in form %}
-            <label class="form-control w-full max-w-xs" for="{{field.id_for_label}}">
+            <label class="form-control w-full" for="{{field.id_for_label}}">
                 <div class="label">
                     <span class="label-text">{{field.label}}</span>
                 </div>

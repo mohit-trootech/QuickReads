@@ -2,16 +2,16 @@ from django import forms
 from quickreads.utils.constants import Constants, Employees
 
 
-class Book(forms.Form):
+class BookForm(forms.Form):
     title = forms.CharField(
         widget=forms.TextInput(
             attrs={"class": Constants.FORM_CLASS.value, "required": True}
         ),
         label="Book Title",
     )
-    description = forms.IntegerField(
-        widget=forms.NumberInput(
-            attrs={"class": Constants.FORM_CLASS.value, "required": True}
+    description = forms.CharField(
+        widget=forms.Textarea(
+            attrs={"class": "textarea textarea-bordered", "required": True}
         ),
         label="Description",
     )
@@ -35,7 +35,7 @@ class Book(forms.Form):
     cover = forms.ImageField(
         widget=forms.ClearableFileInput(
             attrs={
-                "class": Constants.FORM_CLASS.value,
+                "class": "file-input file-input-bordered w-full",
                 "required": True,
                 "type": "file",
                 "accept": "image/*",
@@ -46,7 +46,7 @@ class Book(forms.Form):
     book = forms.FileField(
         widget=forms.ClearableFileInput(
             attrs={
-                "class": Constants.FORM_CLASS.value,
+                "class": "file-input file-input-bordered w-full",
                 "required": True,
                 "type": "file",
                 "accept": "application/pdf",

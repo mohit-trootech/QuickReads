@@ -2,23 +2,33 @@
 {% block title %}Add Employee{%endblock%}
 
 {% block content %}
-<div class="container my-5">
-    <form method="post" class="needs-validation " novalidate enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="row mb-3 mx-2">
-            <label for="{{field.id_for_label}}" class="form-label">{{field.label}}</label>
-            {{field}}
-            {% if field.help_text %}
-            <div class="invalid-feedback">
-                {{field.help_text}}
-            </div>
-            {% endif %}
-        </div>
-        {% endfor %}
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
+<div class="flex flex-col border shadow-sm rounded-xl mx-auto w-3/5 my-8  text-center">
+    <div class="border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5">
+        <h3 class="text-lg font-bold">
+            Add New Book
+        </h3>
+    </div>
+    <div class="p-4 md:p-5">
+        <p class="mt-2">
+            Contribute in Community Lets Everyone Reads Your Favourite Book
+        </p>
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            {% for field in form %}
+            <label class="form-control w-full" for="{{field.id_for_label}}">
+                <div class="label">
+                    <span class="label-text">{{field.label}}</span>
+                </div>
+                {{field}}
+            </label>
+            {% endfor %}
+            <div class="mt-8"></div>
+            <button type="submit"
+                class="w-full shadow-xl py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                Create Book
+            </button>
+    </div>
     </form>
+</div>
 </div>
 {% endblock %}

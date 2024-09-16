@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "accounts.apps.AccountsConfig",
     "pyrebase",
+    "django_htmx",
 ]
 
 MIDDLEWARE = [
@@ -100,3 +101,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, STATIC_PATH)]
 STATIC_ROOT = STATIC_ROOT
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Email Configuration
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_SSL = True  # use port 465
+EMAIL_USE_TLS = False  # use port 587
+EMAIL_PORT = 465  # OR 587
+EMAIL_HOST_USER = config.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config.get("EMAIL_HOST_PASSWORD")
